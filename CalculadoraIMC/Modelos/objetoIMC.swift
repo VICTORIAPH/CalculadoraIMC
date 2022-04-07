@@ -11,7 +11,7 @@ import UIKit
 struct objetoIMC{
     
     let valor: Float
-    let mensaje: String
+    let aviso: String
     let color: UIColor
-    let imagen: UIImage?
+    let image: UIImage?
 }

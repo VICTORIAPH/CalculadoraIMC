@@ -9,28 +9,27 @@ import UIKit
 
 class ResultadoViewController: UIViewController {
     
-    var valorIMC: String?
-    var msj: String?
-    var color: UIColor?
 
-    @IBOutlet weak var valorIMCLabel: UILabel!
+    @IBOutlet weak var imcLabel: UILabel!
+    
+    @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var mensajeLabel: UILabel!
+    
+    var valorIMC: String?
+    var aviso: String?
+    var color: UIColor?
+    var image: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          
-        mensajeLabel.text = msj
-        valorIMCLabel.text = valorIMC
+        mensajeLabel.text = aviso
+        imcLabel.text = valorIMC
+        image2.image = image
+        view.backgroundColor = color
+   
+
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

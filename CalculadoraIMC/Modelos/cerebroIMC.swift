@@ -10,46 +10,38 @@ import UIKit
 
 struct cerebroIMC{
     
+    /// IMC
     var imc: objetoIMC?
     
-    //metodos
-    
-    mutating func calcularIMC(peso: Float, altura: Float){
+ 
+    mutating func calcularIMC(peso: Float, altura: Float) {
         let valorIMC = peso / (altura * altura)
-        
+        print(valorIMC)
         if valorIMC < 18.5 {
-            imc = objetoIMC(valor: valorIMC, mensaje: "Estas muy flaco, come mas", color:#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), imagen: nil)
-           
-            }
-      else if valorIMC < 24.9 {
-            imc  = objetoIMC(valor: valorIMC, mensaje: "Tu IMC es normal, Felicidades", color:  #colorLiteral(red: 0.764705896, green: 0.250980401, blue: 0.9490196347, alpha: 1), imagen: nil)
-           
             
-    }else if valorIMC < 29.9 {
-            imc  = objetoIMC(valor: valorIMC, mensaje: "Tienes Sobrepeso cuidado", color: #colorLiteral(red: 0.764705896, green: 0.250980401, blue: 0.9490196347, alpha: 1), imagen: nil)
-            
-            
+            imc = objetoIMC(valor: valorIMC, aviso: "Tu IMC esta abajo", color: UIColor.yellow, image: UIImage(named: "bajo"))
+        }else if valorIMC < 24.9 {
+            imc = objetoIMC(valor: valorIMC, aviso: "Estas en un rango normal", color: UIColor.green, image: UIImage(named: "normal"))
+        }else if valorIMC < 29.9 {
+            imc = objetoIMC(valor: valorIMC, aviso: "Tienes sobrepeso", color: UIColor.red, image: UIImage(named: "alto"))
         }else{
-        imc  = objetoIMC(valor: valorIMC, mensaje: "Obesidad extrema visita un doctor", color: #colorLiteral(red: 0.764705896, green: 0.250980401, blue: 0.9490196347, alpha: 1), imagen: nil)
-           
-       }
+            imc = objetoIMC(valor: valorIMC, aviso: "Tienes sobrepeso extrema :(", color: UIColor.red, image: UIImage(named: "sobrepeso"))
+        }
     }
-    
-    func retornarValorIMC() -> String{
+    func retornaValorIMC() -> String {
         let imcCon1Decimal = String(format: "%.1f", imc?.valor ?? 0.0)
-                return imcCon1Decimal
+        return imcCon1Decimal
+    }
+    func darAviso() -> String {
+        return imc?.aviso ?? "No hay mensaje!!!"
         
     }
-    
-    func retornarColor() -> UIColor{
-        return imc?.color ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)    }
-    
-    func retornarMSJ() -> String{
-        return imc?.mensaje ?? "Sin MSJ"
-        
+    func retornarColor() -> UIColor {
+        return imc?.color ?? UIColor.cyan
+    }
+   func retornarColor() -> UIImage {
+    return imc?.image ?? UIImage(named: "normal") as! UIImage
     }
     
-   // func retornarImagen() -> UIImage{
-        
-   // }
+    
 }
